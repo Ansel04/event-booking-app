@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F5F5">
+
+    <!-- CardView for Event Details -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="4dp"
+        android:padding="16dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/coldplay" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coldplay: Music of the Spheres"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"
+                android:layout_marginTop="8dp"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enjoy heartwarming music from the band which is well known around the world!"
+                android:textSize="14sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#666666"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Ticket Quantity Selector -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Number of Tickets:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:textColor="#000000"/>
+
+    <NumberPicker
+        android:id="@+id/ticketNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Date Picker -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Date:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:textColor="#000000"/>
+
+    <EditText
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select Date"
+        android:focusable="false"
+        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <!-- Seat Type Selector -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Seat Type:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:textColor="#000000"/>
+
+    <Spinner
+        android:id="@+id/seatType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Book Ticket Button -->
+    <Button
+        android:id="@+id/bookTicket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book Ticket"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FF5722"
+        android:textColor="#FFFFFF"/>
+</LinearLayout>
