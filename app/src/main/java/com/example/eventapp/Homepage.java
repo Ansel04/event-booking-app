@@ -12,17 +12,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.eventapp.adapters.CategoryAdapter;
+import com.example.eventapp.adapters.MusicAdapter;
 import com.example.eventapp.adapters.PopularAdapter;
-import com.example.eventapp.adapters.UpcomingAdapter;
-import com.example.eventapp.models.CategoryModel;
+import com.example.eventapp.adapters.SportsAdapter;
+import com.example.eventapp.models.MusicModel;
 import com.example.eventapp.models.PopularModel;
-import com.example.eventapp.models.UpcomingModel;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.eventapp.models.SportsModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -45,7 +43,6 @@ public class Homepage extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         sharedPreferences = getSharedPreferences("TicketPrefs", MODE_PRIVATE);
 
-
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) {
             startActivity(new Intent(Homepage.this, MainActivity.class));
@@ -57,59 +54,45 @@ public class Homepage extends AppCompatActivity {
         navticket = findViewById(R.id.navticket);
         navprofile = findViewById(R.id.navprofile);
 
-
         RecyclerView recyclerView = findViewById(popular_events_recyclerview);
 
-        // Set LayoutManager for horizontal scrolling
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-
-
-        // Create a list of items
         List<PopularModel> itemList = new ArrayList<>();
-        itemList.add(new PopularModel("Event 1", R.drawable.baseline_account_circle_24));
-        itemList.add(new PopularModel("Event 2", R.drawable.game));
+        itemList.add(new PopularModel("Coldplay", R.drawable.baseline_account_circle_24));
+        itemList.add(new PopularModel("Ready or Not", R.drawable.game));
         itemList.add(new PopularModel("Event 3", R.drawable.music));
         itemList.add(new PopularModel("Event 4", R.drawable.theater));
 
-        // Set adapter
         PopularAdapter adapter = new PopularAdapter(this, itemList);
         recyclerView.setAdapter(adapter);
-
-
-
 
         RecyclerView categoryRecyclerView = findViewById(category_events_recyclerview);
         LinearLayoutManager categoryLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         categoryRecyclerView.setLayoutManager(categoryLayoutManager);
 
-        List<CategoryModel> categoryItemList = new ArrayList<>();
-        categoryItemList.add(new CategoryModel("Music Events", R.drawable.game));
-        categoryItemList.add(new CategoryModel("Sports Events", R.drawable.cultural));
-        categoryItemList.add(new CategoryModel("Art Events", R.drawable.music));
-        categoryItemList.add(new CategoryModel("Technology Events", R.drawable.lock));
+        List<MusicModel> categoryItemList = new ArrayList<>();
+        categoryItemList.add(new MusicModel("Music Events", R.drawable.game));
+        categoryItemList.add(new MusicModel("Sports Events", R.drawable.cultural));
+        categoryItemList.add(new MusicModel("Art Events", R.drawable.music));
+        categoryItemList.add(new MusicModel("Technology Events", R.drawable.lock));
 
-        CategoryAdapter categoryAdapter = new CategoryAdapter(this, categoryItemList);
-        categoryRecyclerView.setAdapter(categoryAdapter);
-
-
-
-
+        MusicAdapter musicAdapter = new MusicAdapter(this, categoryItemList);
+        categoryRecyclerView.setAdapter(musicAdapter);
 
         RecyclerView upcomingRecyclerView = findViewById(upcoming_events_recyclerview);
         LinearLayoutManager upcomingLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         upcomingRecyclerView.setLayoutManager(upcomingLayoutManager);
 
-        List<UpcomingModel> upcomingItemList = new ArrayList<>();
-        upcomingItemList.add(new UpcomingModel("Music Events", R.drawable.game));
-        upcomingItemList.add(new UpcomingModel("Sports Events", R.drawable.cultural));
-        upcomingItemList.add(new UpcomingModel("Art Events", R.drawable.music));
-        upcomingItemList.add(new UpcomingModel("Technology Events", R.drawable.lock));
+        List<SportsModel> upcomingItemList = new ArrayList<>();
+        upcomingItemList.add(new SportsModel("Music Events", R.drawable.game));
+        upcomingItemList.add(new SportsModel("Sports Events", R.drawable.cultural));
+        upcomingItemList.add(new SportsModel("Art Events", R.drawable.music));
+        upcomingItemList.add(new SportsModel("Technology Events", R.drawable.lock));
 
-        UpcomingAdapter upcomingAdapter = new UpcomingAdapter(this, upcomingItemList);
-        upcomingRecyclerView.setAdapter(upcomingAdapter);
-
+        SportsAdapter sportsAdapter = new SportsAdapter(this, upcomingItemList);
+        upcomingRecyclerView.setAdapter(sportsAdapter);
 
         navfeed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,14 +110,6 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
-//        navticket.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent ticket = new Intent(Homepage.this, TicketView.class);
-//                startActivity(ticket);
-//            }
-//        });
-        // Navigate to TicketView when clicking navticket
         navticket.setOnClickListener(view -> {
             String lastTicketId = sharedPreferences.getString("lastTicketId", null);
             if (lastTicketId != null) {
@@ -153,6 +128,5 @@ public class Homepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

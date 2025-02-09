@@ -22,15 +22,17 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/eventImage"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/coldplay" />
 
             <TextView
+                android:id="@+id/eventTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Coldplay: Music of the Spheres"
+                android:text="title"
                 android:textSize="18sp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
@@ -39,9 +41,10 @@
                 android:textColor="#000000"/>
 
             <TextView
+                android:id="@+id/eventDesp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enjoy heartwarming music from the band which is well known around the world!"
+                android:text="Desp"
                 android:textSize="14sp"
                 android:layout_marginLeft="10dp"
                 android:textColor="#666666"/>

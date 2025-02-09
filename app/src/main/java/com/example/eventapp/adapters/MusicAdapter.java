@@ -11,17 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.eventapp.R;
-import com.example.eventapp.models.CategoryModel;
+import com.example.eventapp.models.MusicModel;
 
 import java.util.List;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
+public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> {
 
     private Context context;
-    private List<CategoryModel> categoryList;
+    private List<MusicModel> categoryList;
 
     // Constructor
-    public CategoryAdapter(Context context, List<CategoryModel> categoryList) {
+    public MusicAdapter(Context context, List<MusicModel> categoryList) {
         this.context = context;
         this.categoryList = categoryList;
     }
@@ -37,7 +37,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Get the current category item
-        CategoryModel category = categoryList.get(position);
+        MusicModel category = categoryList.get(position);
 
         // Bind data to the views
         holder.categoryName.setText(category.getName());

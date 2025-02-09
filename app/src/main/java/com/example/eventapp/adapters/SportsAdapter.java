@@ -9,18 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.eventapp.models.PopularModel;
 import com.example.eventapp.R;
-import com.example.eventapp.models.UpcomingModel;
+import com.example.eventapp.models.SportsModel;
 
 import java.util.List;
 
-public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHolder> {
+public class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder> {
 
     private Context context;
-    private List<UpcomingModel> upcomingItemList;
+    private List<SportsModel> upcomingItemList;
 
-    public UpcomingAdapter(Context context, List<UpcomingModel> itemList) {
+    public SportsAdapter(Context context, List<SportsModel> itemList) {
         this.context = context;
         this.upcomingItemList = itemList;
     }
@@ -34,7 +33,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        UpcomingModel item = upcomingItemList.get(position);
+        SportsModel item = upcomingItemList.get(position);
         holder.upcomingName.setText(item.getTitle());
         holder.upcomingImage.setImageResource(item.getImageResId());
     }

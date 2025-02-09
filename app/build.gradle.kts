@@ -47,4 +47,5 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation (libs.firebase.database)
     implementation(libs.roundedimageview)
+    implementation(libs.glide)
 }

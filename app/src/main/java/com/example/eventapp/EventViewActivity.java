@@ -3,21 +3,27 @@ package com.example.eventapp;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -29,8 +35,9 @@ public class EventViewActivity extends AppCompatActivity {
     private NumberPicker ticketNumberPicker;
     private Spinner seatTypeSpinner;
     private Button bookTicketButton;
-
-    private DatabaseReference databaseReference;
+    public TextView eventTitleTv,eventDespTv;
+    public ImageView image;
+    private DatabaseReference userDb, eventsDb;
     private FirebaseAuth mAuth;
 
     @Override
@@ -42,17 +49,57 @@ public class EventViewActivity extends AppCompatActivity {
         ticketNumberPicker = findViewById(R.id.ticketNumber);
         seatTypeSpinner = findViewById(R.id.seatType);
         bookTicketButton = findViewById(R.id.bookTicket);
+        eventTitleTv = findViewById(R.id.eventTitle);
+        eventDespTv = findViewById(R.id.eventDesp);
+        image = findViewById(R.id.eventImage);
 
-        // Initialize Firebase
+        String eventTitle = getIntent().getStringExtra("eventTitle");
+
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        eventsDb = FirebaseDatabase.getInstance().getReference("Events");
+        userDb = FirebaseDatabase.getInstance().getReference("Users");
 
-        // Set min and max values for NumberPicker
+        if (eventTitle != null) {
+            DatabaseReference eventRef = eventsDb.child(eventTitle);
+
+            eventRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String name = snapshot.child("name").getValue(String.class);
+                        String desp = snapshot.child("desp").getValue(String.class);
+                        String imageName = snapshot.child("image").getValue(String.class);
+                        if (imageName != null) {
+                            int imageResId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                            if (imageResId != 0) {
+                                image.setImageResource(imageResId);
+                            } else {
+                                image.setImageResource(R.drawable.placeholder);
+                            }
+                        }
+
+                        eventTitleTv.setText(name);
+                        eventDespTv.setText(desp);
+                    } else {
+                        Toast.makeText(EventViewActivity.this, "Event not found!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(EventViewActivity.this, "Failed to load event data.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(this, "Invalid event!", Toast.LENGTH_SHORT).show();
+        }
+
+        // NumberPicker setup
         ticketNumberPicker.setMinValue(1);
         ticketNumberPicker.setMaxValue(10);
         ticketNumberPicker.setWrapSelectorWheel(true);
 
-        // Set up Seat Type Spinner
+        // Seat Type Spinner setup
         String[] seatTypes = {"Regular", "VIP", "Balcony"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, seatTypes);
         seatTypeSpinner.setAdapter(adapter);
@@ -83,7 +130,7 @@ public class EventViewActivity extends AppCompatActivity {
         }
 
         // Reference to user's ticket list
-        DatabaseReference userTicketsRef = databaseReference.child(userId).child("Tickets");
+        DatabaseReference userTicketsRef = userDb.child(userId).child("Tickets");
 
         // Generate a unique ID for each ticket
         String ticketId = userTicketsRef.push().getKey();

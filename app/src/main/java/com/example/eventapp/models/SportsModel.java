@@ -1,10 +1,10 @@
 package com.example.eventapp.models;
 
-public class UpcomingModel {
+public class SportsModel {
     private String title;
     private int imageResId; // Drawable resource ID
 
-    public UpcomingModel(String title, int imageResId) {
+    public SportsModel(String title, int imageResId) {
         this.title = title;
         this.imageResId = imageResId;
     }

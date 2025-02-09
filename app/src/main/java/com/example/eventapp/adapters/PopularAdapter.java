@@ -45,7 +45,6 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
             public void onClick(View view) {
                 Intent eventIntent = new Intent(context, EventViewActivity.class);
                 eventIntent.putExtra("eventTitle", item.getTitle());
-                eventIntent.putExtra("eventImage", item.getImageResId());
                 context.startActivity(eventIntent);
             }
         });
