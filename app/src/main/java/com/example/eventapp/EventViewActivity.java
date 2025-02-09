@@ -108,10 +108,10 @@ public class EventViewActivity extends AppCompatActivity {
         datePicker.setOnClickListener(view -> showDatePicker());
 
         // Book Ticket Button Click Listener
-        bookTicketButton.setOnClickListener(view -> bookTicket());
+        bookTicketButton.setOnClickListener(view -> bookTicket(eventTitle));
     }
 
-    private void bookTicket() {
+    private void bookTicket(String eventTitle) {
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user == null) {
@@ -137,6 +137,7 @@ public class EventViewActivity extends AppCompatActivity {
 
         // Save Data in Firebase
         Map<String, Object> ticketData = new HashMap<>();
+        ticketData.put("eventName",eventTitle);
         ticketData.put("eventDate", selectedDate);
         ticketData.put("ticketCount", selectedTickets);
         ticketData.put("seatType", selectedSeatType);
