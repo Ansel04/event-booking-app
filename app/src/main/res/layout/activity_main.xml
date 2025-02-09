@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -15,13 +16,15 @@
         android:layout_margin="30dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
-        >
+        android:background="@color/black"
+        app:cardBackgroundColor="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
+            android:background="#18181b"
             android:padding="30dp">
 
             <TextView
@@ -30,15 +33,16 @@
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="36sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="40dp" />
 
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_account_circle_24"
                 android:drawablePadding="8dp"
@@ -66,9 +70,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/black"
                 android:text="LOGIN"
-                android:textColor="@color/white"
+                android:backgroundTint="#FF9800"
+                android:textColor="#FFF"
                 android:textSize="20sp"
                 app:cornerRadius="30dp" />
 

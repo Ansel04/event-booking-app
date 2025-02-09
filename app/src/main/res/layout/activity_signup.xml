@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -23,6 +24,7 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingTop="30dp"
+            android:background="#18181b"
             android:paddingBottom="30dp">
 
 
@@ -33,7 +35,7 @@
                 android:layout_gravity="center"
                 android:text="Signup"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -52,6 +54,7 @@
                 android:hint="Username"
                 android:padding="8dp"
                 android:textColor="@color/black"
+                android:textColorHint="#888888"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <EditText
@@ -68,6 +71,7 @@
                 android:hint="Email"
                 android:padding="8dp"
                 android:textColor="@color/black"
+                android:textColorHint="#888888"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <EditText
@@ -85,6 +89,7 @@
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"
+                android:textColorHint="#888888"
                 android:textColorHighlight="@color/cardview_dark_background"/>
 
             <EditText
@@ -102,6 +107,7 @@
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"
+                android:textColorHint="#888888"
                 android:textColorHighlight="@color/cardview_dark_background"/>
             <Button
                 android:layout_width="match_parent"
@@ -112,7 +118,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="#FF9800"
+                android:textColor="#FFF"
                 app:cornerRadius = "40dp">
 
             </Button>

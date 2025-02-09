@@ -6,6 +6,25 @@
     android:background="#121212"
     android:orientation="vertical">
 
+    <!-- App Name -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Eventopia"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="16dp"/>
+
+    <!-- Banner Image -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/eventopia"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="16dp"/>
+
     <!-- Content Area -->
     <ScrollView
         android:layout_width="match_parent"
@@ -18,91 +37,53 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Header Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Discover Amazing Events"
-                    android:textColor="#FFFFFF"
-                    android:textSize="22sp" />
-            </LinearLayout>
-
             <!-- Popular Events Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Popular Events"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
+                android:text="Popular Events"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/popular_events_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:scrollbars="horizontal" />
+                android:layout_marginBottom="16dp"/>
 
-            <!-- Category Events Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Music Events Section -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Music Events"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
+                android:text="Music Events"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/category_events_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:scrollbars="horizontal" />
+                android:layout_marginBottom="16dp"/>
 
-            <!-- Additional Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Sports Events Section -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sports Events"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
+                android:text="Sports Events"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/upcoming_events_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:scrollbars="horizontal" />
-
+                android:layout_marginBottom="16dp"/>
         </LinearLayout>
     </ScrollView>
 
@@ -110,17 +91,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:background="#202020"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="12dp">
 
         <ImageButton
             android:id="@+id/navhome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_home"
+            app:srcCompat="@drawable/homenav"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="#FFFFFF" />
 
@@ -129,7 +109,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_feedback"
+            app:srcCompat="@drawable/feedbacknav"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="#FFFFFF" />
 
@@ -138,7 +118,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/baseline_airplane_ticket_24"
+            app:srcCompat="@drawable/ticketnav"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="#FFFFFF" />
 
@@ -147,10 +127,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/baseline_account_circle_24"
+            app:srcCompat="@drawable/usernav"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="#FFFFFF" />
-
     </LinearLayout>
-
 </LinearLayout>
