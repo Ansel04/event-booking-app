@@ -41,7 +41,6 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
         auth = FirebaseAuth.getInstance();
-        sharedPreferences = getSharedPreferences("TicketPrefs", MODE_PRIVATE);
 
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) {
@@ -111,14 +110,8 @@ public class Homepage extends AppCompatActivity {
         });
 
         navticket.setOnClickListener(view -> {
-            String lastTicketId = sharedPreferences.getString("lastTicketId", null);
-            if (lastTicketId != null) {
-                Intent intent = new Intent(Homepage.this, TicketView.class);
-                intent.putExtra("ticketId", lastTicketId);
-                startActivity(intent);
-            } else {
-                Toast.makeText(Homepage.this, "No booked ticket found!", Toast.LENGTH_SHORT).show();
-            }
+            Intent intent = new Intent(Homepage.this, TicketView.class);
+            startActivity(intent);
         });
 
         navprofile.setOnClickListener(new View.OnClickListener() {
