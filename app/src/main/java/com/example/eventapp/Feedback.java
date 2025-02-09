@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class Feedback extends AppCompatActivity {
     private RatingBar ratingBar;
     private EditText reviewInput;
     private Button submitReview;
+    private TextView ratingText; // Added TextView for displaying selected rating
     private DatabaseReference databaseRef; // Firebase Database Reference
 
     @Override
@@ -30,9 +32,18 @@ public class Feedback extends AppCompatActivity {
         ratingBar = findViewById(R.id.ratingBar);
         reviewInput = findViewById(R.id.reviewInput);
         submitReview = findViewById(R.id.submitReview);
+        ratingText = findViewById(R.id.ratingText); // Initialize the TextView
 
         // Initialize Firebase Realtime Database
         databaseRef = FirebaseDatabase.getInstance().getReference("Reviews");
+
+        // Update selected rating dynamically
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                ratingText.setText("Selected Rating: " + rating);
+            }
+        });
 
         submitReview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +79,10 @@ public class Feedback extends AppCompatActivity {
         // Store in Realtime Database
         databaseRef.child(reviewId).setValue(reviewData)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(this, "Updated in database", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Review Submitted", Toast.LENGTH_SHORT).show();
                     ratingBar.setRating(0); // Reset Rating
                     reviewInput.setText(""); // Clear input field
+                    ratingText.setText("Selected Rating: 0"); // Reset selected rating text
                 })
                 .addOnFailureListener(e -> Toast.makeText(this, "Failed to update!", Toast.LENGTH_SHORT).show());
     }
