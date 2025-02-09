@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Profile extends AppCompatActivity {
 
     private TextView userName, userEmail;
-    private Button signOutBtn;
+    private Button signOutBtn, change;
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
 
@@ -34,6 +34,7 @@ public class Profile extends AppCompatActivity {
         userName = findViewById(R.id.user_name);
         userEmail = findViewById(R.id.user_email);
         signOutBtn = findViewById(R.id.signout_btn);
+        change = findViewById(R.id.changeBtn);
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
@@ -64,6 +65,13 @@ public class Profile extends AppCompatActivity {
                 auth.signOut();
                 startActivity(new Intent(Profile.this, MainActivity.class));
                 finish();
+            }
+        });
+
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Profile.this,ChangePassword.class));
             }
         });
     }

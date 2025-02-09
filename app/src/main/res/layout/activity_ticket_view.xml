@@ -6,11 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#121212"
     tools:context=".TicketView">
 
     <Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:titleTextColor="@color/white"
         android:title="Tickets"/>
 
     <LinearLayout
