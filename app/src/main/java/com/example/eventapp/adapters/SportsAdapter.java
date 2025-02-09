@@ -1,15 +1,19 @@
 package com.example.eventapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.eventapp.EventViewActivity;
 import com.example.eventapp.R;
+import com.example.eventapp.models.PopularModel;
 import com.example.eventapp.models.SportsModel;
 
 import java.util.List;
@@ -17,40 +21,52 @@ import java.util.List;
 public class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder> {
 
     private Context context;
-    private List<SportsModel> upcomingItemList;
+    private List<SportsModel> itemList;
 
     public SportsAdapter(Context context, List<SportsModel> itemList) {
         this.context = context;
-        this.upcomingItemList = itemList;
+        this.itemList = itemList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_upcoming, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_event, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SportsModel item = upcomingItemList.get(position);
-        holder.upcomingName.setText(item.getTitle());
-        holder.upcomingImage.setImageResource(item.getImageResId());
+        SportsModel item = itemList.get(position);
+        holder.itemText.setText(item.getTitle());
+        holder.itemImage.setImageResource(item.getImageResId());
+
+
+        holder.eventcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent eventIntent = new Intent(context, EventViewActivity.class);
+                eventIntent.putExtra("eventTitle", item.getTitle());
+                context.startActivity(eventIntent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return upcomingItemList.size();
+        return itemList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView upcomingImage;
-        TextView upcomingName;
+        LinearLayout eventcard;
+        ImageView itemImage;
+        TextView itemText;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            upcomingImage = itemView.findViewById(R.id.upcoming_image);
-            upcomingName = itemView.findViewById(R.id.upcoming_text);
+            itemImage = itemView.findViewById(R.id.item_image);
+            itemText = itemView.findViewById(R.id.item_text);
+            eventcard = itemView.findViewById(R.id.eventcard);
         }
     }
 }

@@ -1,22 +1,20 @@
 package com.example.eventapp.models;
 
 public class MusicModel {
+    private String title;
+    private int imageResId; // Drawable resource ID
 
-    private String name;
-    private int imageResId;
-
-    // Constructor
-    public MusicModel(String name, int imageResId) {
-        this.name = name;
+    public MusicModel(String title, int imageResId) {
+        this.title = title;
         this.imageResId = imageResId;
     }
 
-    // Getters
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public int getImageResId() {
         return imageResId;
     }
 }
+

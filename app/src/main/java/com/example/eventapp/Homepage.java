@@ -61,9 +61,9 @@ public class Homepage extends AppCompatActivity {
 
         List<PopularModel> itemList = new ArrayList<>();
         itemList.add(new PopularModel("Coldplay", R.drawable.baseline_account_circle_24));
-        itemList.add(new PopularModel("Ready or Not", R.drawable.game));
-        itemList.add(new PopularModel("Event 3", R.drawable.music));
-        itemList.add(new PopularModel("Event 4", R.drawable.theater));
+        itemList.add(new PopularModel("Martin Garrix", R.drawable.game));
+        itemList.add(new PopularModel("Lollapalooza", R.drawable.music));
+        itemList.add(new PopularModel("F1", R.drawable.theater));
 
         PopularAdapter adapter = new PopularAdapter(this, itemList);
         recyclerView.setAdapter(adapter);
@@ -73,10 +73,10 @@ public class Homepage extends AppCompatActivity {
         categoryRecyclerView.setLayoutManager(categoryLayoutManager);
 
         List<MusicModel> categoryItemList = new ArrayList<>();
-        categoryItemList.add(new MusicModel("Music Events", R.drawable.game));
-        categoryItemList.add(new MusicModel("Sports Events", R.drawable.cultural));
-        categoryItemList.add(new MusicModel("Art Events", R.drawable.music));
-        categoryItemList.add(new MusicModel("Technology Events", R.drawable.lock));
+        categoryItemList.add(new MusicModel("Coldplay", R.drawable.game));
+        categoryItemList.add(new MusicModel("Hurry Up Tommorow", R.drawable.cultural));
+        categoryItemList.add(new MusicModel("Carnival", R.drawable.music));
+        categoryItemList.add(new MusicModel("Utopia", R.drawable.lock));
 
         MusicAdapter musicAdapter = new MusicAdapter(this, categoryItemList);
         categoryRecyclerView.setAdapter(musicAdapter);
@@ -86,10 +86,10 @@ public class Homepage extends AppCompatActivity {
         upcomingRecyclerView.setLayoutManager(upcomingLayoutManager);
 
         List<SportsModel> upcomingItemList = new ArrayList<>();
-        upcomingItemList.add(new SportsModel("Music Events", R.drawable.game));
-        upcomingItemList.add(new SportsModel("Sports Events", R.drawable.cultural));
-        upcomingItemList.add(new SportsModel("Art Events", R.drawable.music));
-        upcomingItemList.add(new SportsModel("Technology Events", R.drawable.lock));
+        upcomingItemList.add(new SportsModel("Football", R.drawable.game));
+        upcomingItemList.add(new SportsModel("Table Tennis", R.drawable.cultural));
+        upcomingItemList.add(new SportsModel("F1", R.drawable.music));
+        upcomingItemList.add(new SportsModel("Cricket", R.drawable.lock));
 
         SportsAdapter sportsAdapter = new SportsAdapter(this, upcomingItemList);
         upcomingRecyclerView.setAdapter(sportsAdapter);
