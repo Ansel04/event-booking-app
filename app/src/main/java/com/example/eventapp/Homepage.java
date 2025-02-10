@@ -5,6 +5,7 @@ import static com.example.eventapp.R.id.category_events_recyclerview;
 import static com.example.eventapp.R.id.upcoming_events_recyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.eventapp.adapters.MusicAdapter;
@@ -32,6 +34,8 @@ public class Homepage extends AppCompatActivity {
     FirebaseAuth auth;
     ImageButton navhome, navfeed, navticket, navprofile;
 
+    TextView textView;
+
     private SharedPreferences sharedPreferences;
 
 
@@ -39,6 +43,13 @@ public class Homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE|
+                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION|
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         auth = FirebaseAuth.getInstance();
 

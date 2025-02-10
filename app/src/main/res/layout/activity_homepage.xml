@@ -9,21 +9,24 @@
     <!-- App Name -->
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <TextView
+        android:id="@+id/eventopia"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Eventopia"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:textSize="32sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:padding="16dp"/>
+        android:fontFamily="serif-monospace"
+        android:padding="20dp"
+        android:shadowColor="@color/white"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="6"
+        android:background="@drawable/gradient_bg"/>
 
-    <!-- Banner Image -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/eventopia"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="16dp"/>
 
     <!-- Content Area -->
     <ScrollView
